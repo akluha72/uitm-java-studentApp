@@ -2,15 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <sql:setDataSource var="myDatasource"
-                   driver="org.apache.derby.jdbc.ClientDataSource"
+                   driver="org.apache.derby.jdbc.ClientDriver"
                    url="jdbc:derby://localhost:1527/StudentDB"
                    user="app" password="app"/>
+
 
 <c:set var="id" value="${param.id}" />
 <c:set var="name" value="${param.name}" />
 <c:set var="branch" value="${param.branch}" />
 
-<form action="Insert.jsp" method="post">
+<form action="insert.jsp" method="post">
     ID: <input type="text" name="id"><br>
     Name: <input type="text" name="name"><br>
     Branch: <input type="text" name="branch"><br>
@@ -33,7 +34,7 @@
 
 <table border="1">
     <tr><th>ID</th><th>Name</th><th>Branch</th></tr>
-    <c:forEach var="row" items="${result.rows}">
+            <c:forEach var="row" items="${result.rows}">
         <tr>
             <td>${row.ID}</td>
             <td>${row.NAME}</td>
